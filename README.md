@@ -1,6 +1,6 @@
 # Homework1-MustafaSaidKocatepe
 
-Temel CRUD işlemlerinin yapılabilabildiği basit bir API projesi. GET-POST-PUT-PATCH işlemleri yapılabilir. Ayrıca verilen parametrelere göre kullanıcılar filtreli veya sıralı bir şekilde listelenebilir.
+Temel CRUD işlemlerinin yapılabildiği basit bir API projesi. GET-POST-PUT-PATCH işlemleri yapılabilir. Ayrıca verilen parametrelere göre kullanıcılar filtreli veya sıralı bir şekilde listelenebilir.
 
 ## Installation
 
