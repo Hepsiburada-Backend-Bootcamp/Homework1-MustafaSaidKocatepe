@@ -12,12 +12,12 @@ git clone https://github.com/Hepsiburada-Backend-Bootcamp/Homework1-MustafaSaidK
 
 Sort ile name, surname, email, telephone, createddate, isactive parametrelerinden birisi kullanılarak kullanıcılar sıralı bir şekilde alınabilir.
 ```bash
-https://localhost:44325/v1/users/group?groupParameter=name
+https://localhost:44325/v1/users/sort?sortParameter=name
 ```
 
 Group ile name, surname, email, telephone, createddate, isactive parametrelerinden birisi kullanılarak kullanıcılar gruplu bir şekilde alınabilir.
 ```bash
-https://localhost:44325/v1/users/sort?sortParameter=name
+https://localhost:44325/v1/users/group?groupParameter=name
 ```
 
 ## Lisans
