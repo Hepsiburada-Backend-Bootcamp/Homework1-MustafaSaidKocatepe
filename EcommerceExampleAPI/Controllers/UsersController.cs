@@ -2,6 +2,7 @@
 using EcommerceExampleAPI.Models.Order;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -109,22 +110,26 @@ namespace EcommerceExampleAPI.Controllers
         }
 
         [HttpPatch("{id}")]
+        [ProducesResponseType(typeof(UserDto), 200)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(500)]
         public IActionResult UpdateEmail(int id, [FromBody] EmailDto emailDto)
         {
             var user = _userDtos.FirstOrDefault(x => x.Id == id);
 
             if (user == null)
             {
-                return NotFound();
+                return BadRequest();
             }
 
             user.Email = emailDto.Email;
-            return Ok();
+            return Ok(user);
         }
 
         [HttpPut("{id}")]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
+        [ProducesResponseType(500)]
         public IActionResult UpdateFullName(int id, [FromBody] FullNameDto fullNameDto)
         {
             var user = _userDtos.FirstOrDefault(x => x.Id == id);
@@ -173,7 +178,7 @@ namespace EcommerceExampleAPI.Controllers
         [ProducesResponseType(typeof(List<List<UserDto>>), 200)]
         [ProducesResponseType(404)]
         [ProducesResponseType(500)]
-        public IActionResult Group([FromQuery] string groupParameter)
+        public IActionResult Group([FromQuery, BindRequired] string groupParameter)
         {
             var result = new List<List<UserDto>>();
 
@@ -209,7 +214,7 @@ namespace EcommerceExampleAPI.Controllers
         [ProducesResponseType(typeof(List<UserDto>), 200)]
         [ProducesResponseType(404)]
         [ProducesResponseType(500)]
-        public IActionResult Sort([FromQuery] string sortParameter)
+        public IActionResult Sort([FromQuery, BindRequired] string sortParameter)
         {
             var result = new List<UserDto>();
 
@@ -294,7 +299,7 @@ namespace EcommerceExampleAPI.Controllers
         {
             var user = _userDtos.FirstOrDefault(x => x.Id == id);
 
-            if (user == null)
+            if (user == null || user.Orders.Count == 0)
             {
                 return NotFound();
             }

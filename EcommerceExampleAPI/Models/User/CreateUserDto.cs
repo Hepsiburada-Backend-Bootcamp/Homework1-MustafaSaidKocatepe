@@ -15,9 +15,15 @@ namespace EcommerceExampleAPI.Models
         [MaxLength(20)]
         public string Surname { get; set; }
         [Required]
+        [RegularExpression(@"^(([^<>()[\]\\.,;:\s@\""]+"
++                           @"(\.[^<>()[\]\\.,;:\s@\""]+)*)|(\"".+\""))@"
++                           @"((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}"
++                           @"\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+"
++                           @"[a-zA-Z]{2,}))$", ErrorMessage = "Please enter a valid email")]
+
         public string Email { get; set; }
         [Required]
-        [RegularExpression(@"(05)([0-9]{2})\s?([0-9]{3})\s?([0-9]{2})\s?([0-9]{2})$", ErrorMessage = "Please enter a valid telephone address")]
+        [RegularExpression(@"(05)([0-9]{2})\s?([0-9]{3})\s?([0-9]{2})\s?([0-9]{2})$", ErrorMessage = "Please enter a valid telephone")]
         public string Telephone { get; set; }
     }
 }
